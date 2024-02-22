@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwsfkk4gnh60p"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_o82l8"]
+[ext_resource type="PackedScene" uid="uid://xmcsiusiqr41" path="res://laser_gun/laser_gun.tscn" id="2_n6lll"]
+[ext_resource type="PackedScene" uid="uid://bl322emkcxr3p" path="res://laser_gun/laser/laser.tscn" id="3_shd1w"]
+[ext_resource type="Texture2D" uid="uid://qroo21g4uo2s" path="res://assets/laser_gun.png" id="4_gs2kc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tyhqn"]
+size = Vector2(40, 40)
+
+[node name="Player" type="CharacterBody2D" groups=["damageable"]]
+collision_mask = 6
+script = ExtResource("1_o82l8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_tyhqn")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -20.0
+offset_top = -19.0
+offset_right = 20.0
+offset_bottom = 21.0
+color = Color(0, 1, 1, 1)
+
+[node name="LaserGun" parent="." node_paths=PackedStringArray("laser_spawn") instance=ExtResource("2_n6lll")]
+laser_spawn = NodePath("Marker2D")
+laser_scene = ExtResource("3_shd1w")
+start_damage = 20.0
+
+[node name="Marker2D" type="Marker2D" parent="LaserGun"]
+position = Vector2(37, -19)
+
+[node name="Sprite2D" type="Sprite2D" parent="LaserGun"]
+position = Vector2(19, -8)
+scale = Vector2(0.103448, 0.103448)
+texture = ExtResource("4_gs2kc")
+region_rect = Rect2(-348.449, 0, 696.449, 493.157)
+region_filter_clip_enabled = true

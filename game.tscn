@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7jililvu2sdf"]
+
+[ext_resource type="PackedScene" uid="uid://dwsfkk4gnh60p" path="res://player/player.tscn" id="1_52xct"]
+[ext_resource type="PackedScene" uid="uid://bsgh17nhg67lb" path="res://enemy/enemy.tscn" id="2_orryp"]
+[ext_resource type="Texture2D" uid="uid://bu7tgsfgj0kbi" path="res://icon.svg" id="3_joklc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pujj3"]
+size = Vector2(127.053, 127.822)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ug704"]
+size = Vector2(126.35, 129.853)
+
+[node name="Game" type="Node"]
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("1_52xct")]
+position = Vector2(177, 299)
+
+[node name="Enemy" parent="." instance=ExtResource("2_orryp")]
+position = Vector2(421, 287)
+
+[node name="Enemy2" parent="." instance=ExtResource("2_orryp")]
+position = Vector2(561, 299)
+
+[node name="Enemy3" parent="." instance=ExtResource("2_orryp")]
+position = Vector2(629, 299)
+
+[node name="Enemy4" parent="." instance=ExtResource("2_orryp")]
+position = Vector2(687, 278)
+
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2(984, 271)
+scale = Vector2(-2.58947, 5.95358)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall"]
+self_modulate = Color(1, 0, 0, 1)
+texture = ExtResource("3_joklc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(0.965424, -0.251949)
+shape = SubResource("RectangleShape2D_pujj3")
+
+[node name="Mirror" type="StaticBody2D" parent="." groups=["mirror"]]
+position = Vector2(264, 507)
+rotation = 0.785398
+scale = Vector2(-2.05621, 0.437759)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Mirror"]
+texture = ExtResource("3_joklc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mirror"]
+position = Vector2(-0.0557518, -1.90735e-05)
+shape = SubResource("RectangleShape2D_ug704")

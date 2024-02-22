@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl322emkcxr3p"]
+
+[ext_resource type="Script" path="res://laser_gun/laser/laser.gd" id="1_00ode"]
+
+[node name="Laser" type="RayCast2D"]
+target_position = Vector2(100000, 0)
+collision_mask = 7
+script = ExtResource("1_00ode")
+number_can_shots_through = 3
+deviation_factor = 1.0
+exist_time_sec = 0.1
+metadata/_edit_horizontal_guides_ = [-91.0]
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Line2D" type="Line2D" parent="Node"]
+z_index = -1
+width = 3.0
+default_color = Color(1, 0, 0, 1)
